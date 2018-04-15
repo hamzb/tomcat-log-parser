@@ -29,14 +29,22 @@ def parseFile(args):
 		if 'url' in line and 'took' in line:
 			# Extracting the URL, removing IDs
 			result = re.search("url='(.*)' was", line)
-			url = result.group(1)
+			# Exception handling in case the url could not be extracted
+			try:
+				url = result.group(1)
+			except Exception as err:
+				continue
 			url = re.sub(pattern1,"*",url)
 			url = re.sub(pattern2,"*",url)
 			if len(url) > length:
 				length = len(url)
 			# Extracting response times
 			result = re.search("t='(.*)ms'", line)
-			time = result.group(1)
+			# Exception handling in case the response time could not be extracted
+			try:
+				time = result.group(1)
+			except Exception as err:
+				continue
 			# Storing the information in the dict
 			if url in urlsDict:
 				urlsDict[url] = urlsDict[url] + [int(time)]
@@ -58,7 +66,4 @@ parser = argparse.ArgumentParser(description="parses a tomcat log file for endpo
 parser.add_argument('--file', dest='filePath', required=True, help='Log file path')
 parser.set_defaults(func=parseFile)
 args = parser.parse_args()
-try:
-	args.func(args)
-except Exception as err:
-	print str(err)
+args.func(args)
