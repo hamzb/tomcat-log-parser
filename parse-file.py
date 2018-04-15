@@ -10,7 +10,7 @@ def parseFile(args):
 	if not os.path.exists(filePath):
 		print ("File " + filePath + " was not found. Exiting")
 		exit(1)
-	# Initilizing a dict that will store the URLs ans keys and the response times as values. Also Defining the regex patterns of the IDs to remove
+	# Initilizing a dict that will store the URLs as keys and the response times as values. Also Defining the regex patterns of the IDs to remove
 	urlsDict = {}
 	pattern1 = r"[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"
 	pattern2 = r"[a-f0-9]{32}"
