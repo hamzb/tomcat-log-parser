@@ -51,7 +51,7 @@ def parseFile(args):
 			else:
 				urlsDict[url] = [int(time)]
 	
-	# Working on the output: defining the headers and drawing a table. Most python packages for table formatting are not native ones, so I had to draw the table myself
+	# Working on the output: defining the headers, looping over the dict and drawing a table. Most python packages for table formatting are not native ones, so I had to draw the table myself
 	urlHeader = "URL"
 	invocationsHeader = "# invocations"
 	avgHeader = "Avg. response time"
