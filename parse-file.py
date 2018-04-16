@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 import re
-import numpy
 import os.path
 import argparse
 
@@ -58,7 +57,7 @@ def parseFile(args):
 	print "|" + urlHeader + " "*(length-len(urlHeader)) + "|" + invocationsHeader + "|" + avgHeader + "|"
 	for url in urlsDict:
 		invocations = str(len(urlsDict[url]))
-		avg = str(int(numpy.mean(urlsDict[url]))) + " ms"
+		avg = str(int(sum(urlsDict[url]) / float(len(urlsDict[url])))) + " ms"
 		print "|" + url + " "*(length-len(url)) + "|" + invocations + " "*(len(invocationsHeader)-len(invocations)) + "|" + avg + " "*(len(avgHeader)-len(avg)) + "|"
 
 # Initializing an argparse object that takes the log file path as an argument and setting the default function to execute
