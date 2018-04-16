@@ -1,7 +1,7 @@
 ## tomcat-log-parser
 
 ### Requirements
-Python 2.7
+Script was developed and tested on Linux with Python 2.7
 
 ### How to run it
 usage: parse-file.py [-h] --file FILEPATH
